@@ -1,0 +1,16 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: ai-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+
+ai:
+  api:
+    key=sk-9b8d024c87934feca1627a545700a2d9
