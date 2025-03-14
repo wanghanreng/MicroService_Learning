@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@EnableFeignClients(basePackages = {"top.whr.requestservice.openfeign"})
+@EnableFeignClients(basePackages = {"top.whr.requestservice.client" })
 public class RequestServiceApplication {
 
     public static void main(String[] args) {

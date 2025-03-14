@@ -23,7 +23,13 @@ public class ShareController {
     @GetMapping("/{id}")
     public ShareResponse getShare(@PathVariable Integer id) {
         Share share = shareService.getShareById(id);
-        UserVO userVo = userClient.getUser(share.getUserId());
+//        try {
+//            Thread.sleep(500 );
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
+
+        UserVO userVo = userClient.getUser(share.getUserId()).getData();
 
         return new ShareResponse(share, userVo);
     }

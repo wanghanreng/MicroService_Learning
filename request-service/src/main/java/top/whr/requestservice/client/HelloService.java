@@ -1,4 +1,4 @@
-package top.whr.requestservice.openfeign;
+package top.whr.requestservice.client;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
