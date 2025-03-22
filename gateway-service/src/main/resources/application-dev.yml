@@ -1,0 +1,40 @@
+server:
+  port: 9090
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true  #启用服务发现机制
+      routes:
+        - id: user_route                      # 路由的唯一标识
+          order: 1                            # 执行优先级
+          uri: lb://user-service               # 路由匹配的基本路径
+          predicates:
+            - Path=/user/**           # 路由匹配的路径
+#            - Header=token,\d+
+#            - Query=userId,123
+#            - Method=GET
+#            - JDK=21
+          filters:
+            - StripPrefix=1                   # 从请求中去掉一层前缀 /user-service
+            - InvalidParameter=token,-1
+
+
+        - id: content_route
+          order: 1
+          uri: lb://content-service
+          predicates:
+            - Path=/content/**
+          filters:
+            - StripPrefix=1
+
+        - id: jieqi_route
+          order: 1
+          uri: lb://jieqi-service
+          predicates:
+            - Path=/jieqi/**
+          filters:
+            - StripPrefix=1
+            - TimeAccess
